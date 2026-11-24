@@ -1,4 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
 <title>PCA 架構師備考手冊</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -375,6 +376,7 @@ td code{white-space:normal}
     <button class="tab" role="tab" data-tab="picker" aria-selected="false">服務選擇器</button>
     <button class="tab" role="tab" data-tab="diagrams" aria-selected="false">架構圖解</button>
     <button class="tab" role="tab" data-tab="cases" aria-selected="false">案例研究</button>
+    <button class="tab" role="tab" data-tab="bank" aria-selected="false">題庫考點</button>
     <button class="tab" role="tab" data-tab="quiz" aria-selected="false">練習與模擬考</button>
     <button class="tab" role="tab" data-tab="cards" aria-selected="false">速記卡</button>
     <button class="tab" role="tab" data-tab="plan" aria-selected="false">讀書計畫</button>
@@ -547,6 +549,7 @@ td code{white-space:normal}
   <div class="sec">
     <span class="eyebrow">報名到放榜</span>
     <h2>考試日須知</h2>
+    <div class="rel"><button class="jump" data-go="plan#examday">台灣考場與線上監考的實際流程</button></div>
     <div class="grid2">
       <div class="sheet sec"><h3>報名與考場</h3><p>在 CM Connect（cp.certmetrics.com）建立帳號報名，可選線上監考，或到 Pearson VUE 考場（搜尋 Google Cloud）。線上監考需要安靜的房間、網路攝影機與有效證件。</p></div>
       <div class="sheet sec"><h3>作答介面</h3><p>題目可以先標記、稍後回頭檢查。案例題可以在分割畫面裡查看案例全文。沒有官方資料說答錯會倒扣，而留白一定沒有分數，所以每題都要作答。</p></div>
@@ -1316,9 +1319,121 @@ td code{white-space:normal}
 </template>
 
 <!-- ============ QUIZ ============ -->
+<section class="panel" id="p-bank" data-panel="bank" hidden>
+  <div class="chap">
+    <span class="eyebrow">第 7 站 · 題庫考點</span>
+    <h2>把 278 題題庫拆成考點</h2>
+    <p class="why">這一章整理的是你提供的 ExamTopics 題庫（2025-01 擷取，共 278 題：一般題 199 題，另有 79 題屬於已移除的舊案例）。<b>重點不是背答案，而是看出題目反覆考的「線索 → 答案方向」配對。</b>每一條都能對應到前面的考綱、選擇器或圖解，後面的練習題也依這些考點補了 22 題原創題。</p>
+  </div>
+
+  <div class="callout"><b>怎麼用這份題庫，才不會被誤導：</b>
+    <ul class="clean" style="margin-top:6px">
+      <li><b>它是舊版快照。</b>題庫擷取於 2025 年 1 月，考試在 2025 年 10 月底改版，2026 年版的案例與 AI 比重都不同。你筆記裡「考試和題庫一模一樣」是舊版的經驗，現行版本不能這樣預期。</li>
+      <li><b>答案本身有爭議。</b>278 題中約有 31 題的社群投票支持度低於 60%，例如題庫裡同一道 10 TB 傳輸題出現兩個版本，最高票答案卻不同。這些題要靠理解，不是背字母。</li>
+      <li><b>產品名稱已過時。</b>很多題用 Stackdriver、Container Engine 等舊名，甚至是已退役的服務（見下方對照）。</li>
+      <li><b>我沒有把題目原文貼進網站。</b>標榜「實際考題」的內容，使用時可能牴觸認證考試協議，加上版本過時，所以我只抽出考點，再另寫原創題；你可以自己對照 PDF 檢查這些考點有沒有漏。</li>
+    </ul></div>
+
+  <div class="sec">
+    <h2>哪些主題最常出現</h2>
+    <p class="lead">統計方式：一般題 199 題中，題目文字含該主題關鍵字的題數（一題可同時屬於多個主題，所以加起來會超過 199）。長條只是粗略的輕重，用來決定複習順序。</p>
+    <div class="bars"><div class="bar"><span class="lab">資料庫與儲存選型</span><span class="num">59</span><span class="track"><span class="fill" style="display:block;width:98%"></span></span></div><div class="bar"><span class="lab">GKE、容器與無伺服器</span><span class="num">58</span><span class="track"><span class="fill" style="display:block;width:97%"></span></span></div><div class="bar"><span class="lab">網路與混合雲連線</span><span class="num">51</span><span class="track"><span class="fill" style="display:block;width:85%"></span></span></div><div class="bar"><span class="lab">日誌、監控與疑難排解</span><span class="num">40</span><span class="track"><span class="fill" style="display:block;width:67%"></span></span></div><div class="bar"><span class="lab">CI/CD、部署與 IaC</span><span class="num">38</span><span class="track"><span class="fill" style="display:block;width:63%"></span></span></div><div class="bar"><span class="lab">組織、IAM 與身分</span><span class="num">34</span><span class="track"><span class="fill" style="display:block;width:57%"></span></span></div><div class="bar"><span class="lab">安全、合規與加密</span><span class="num">28</span><span class="track"><span class="fill" style="display:block;width:47%"></span></span></div><div class="bar"><span class="lab">高可用、DR 與測試</span><span class="num">28</span><span class="track"><span class="fill" style="display:block;width:47%"></span></span></div><div class="bar"><span class="lab">資料管線與分析</span><span class="num">26</span><span class="track"><span class="fill" style="display:block;width:43%"></span></span></div><div class="bar"><span class="lab">遷移與資料傳輸</span><span class="num">26</span><span class="track"><span class="fill" style="display:block;width:43%"></span></span></div><div class="bar"><span class="lab">成本、流程與商業</span><span class="num">25</span><span class="track"><span class="fill" style="display:block;width:42%"></span></span></div></div>
+    <p class="muted small">資料庫儲存、GKE／無伺服器、網路三個主題最大宗，日誌監控與 CI/CD 次之；這幾塊合起來是題目的主體。</p>
+  </div>
+
+  <div class="sec">
+    <h2>十一個主題的考點</h2>
+    <div class="qbar"><input class="gsearch" id="bkSearch" type="search" placeholder="搜尋考點，例如 Interconnect、Bigtable、Org Policy…" aria-label="搜尋考點"><button class="btn ghost" id="bkAll">全部展開／收合</button></div>
+    <p class="muted small" id="bkCount"></p>
+    <div style="display:grid;gap:12px" id="bkList"><details class="dom bk" id="bk-net"><summary><span class="dnum">51 題</span><span class="dtitle">網路與混合雲連線</span><span class="dmeta">16 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">題庫裡最大宗的主題之一。幾乎都是「這個需求該用 VPN、Interconnect、Peering 還是 NAT」的配對題。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>地端與 GCP 之間要私有、高頻寬、低延遲（資料庫複寫、20 Gbps 以上、VPN 掉包）</td><td><b>Dedicated Interconnect</b></td><td class="muted">VPN 走公網、每條 tunnel 約 3 Gbps，延遲與封包遺失不穩；大量複寫要專線</td></tr><tr><td>平均流量只有 200 kbps，但要求最高可用度又要省錢</td><td><b>HA VPN，2 條 tunnel（99.99%）</b></td><td class="muted">頻寬需求小，不值得買專線；Classic VPN 的 SLA 較低且已不建議</td></tr><tr><td>要 99.99% 的專線 SLA</td><td><b>兩個 metro 各兩條 Interconnect</b></td><td class="muted">單一 metro 或單一連線達不到；Interconnect 的備援常用 VPN 當後備</td></tr><tr><td>兩個 VPC（甚至不同組織）要用內部 IP 互通、低延遲</td><td><b>VPC Network Peering</b></td><td class="muted">IP 範圍不能重疊、不可遞移；不要為此架 VPN</td></tr><tr><td>網段與地端重疊</td><td><b>先重編 IP；做不到才用 NAT 或 PSC 只暴露特定服務</b></td><td class="muted">重疊網段是 Peering 與 VPN 的硬傷，路由會衝突</td></tr><tr><td>VM 沒有外部 IP 要上網／裝套件</td><td><b>Cloud NAT</b></td><td class="muted">只能往外連，外面連不進來；私有 GKE 叢集同理</td></tr><tr><td>VM 沒有外部 IP 要存取 Cloud Storage、BigQuery 等 Google API</td><td><b>Private Google Access</b></td><td class="muted">不需要 NAT；要內部 IP 端點則用 PSC for Google APIs</td></tr><tr><td>沒有外部 IP 的 VM 要讓管理員 SSH 進去</td><td><b>IAP TCP forwarding</b></td><td class="muted">不需要 VPN、跳板機或對外開 22</td></tr><tr><td>整個組織禁止（只放行少數）外部 IP</td><td><b>Org Policy：constraints/compute.vmExternalIpAccess</b></td><td class="muted">在組織層一次強制，比改路由或刪除預設路由可靠</td></tr><tr><td>web → API → DB 三層，只允許相鄰層通訊，且會自動擴展</td><td><b>網路標籤或服務帳戶 + 防火牆規則</b></td><td class="muted">不能依賴固定 IP；靠切子網路或 VM 內軟體防火牆都不夠彈性</td></tr><tr><td>「拒絕全部＋例外放行」的防火牆規則</td><td><b>放行規則的優先權數字要比拒絕規則小</b></td><td class="muted">優先權數字越小越先比對</td></tr><tr><td>同一網址依 URL path 導向舊版與新版 API，且憑證與 DNS 不變</td><td><b>同一個全球外部 Application LB，URL map 分到不同 backend</b></td><td class="muted">新開一個 LB 會換 IP、憑證與 DNS</td></tr><tr><td>MIG 的 VM 每分鐘被重建</td><td><b>防火牆沒放行健康檢查來源（130.211.0.0/22、35.191.0.0/16）</b></td><td class="muted">健康檢查失敗，MIG 會判定不健康並重建</td></tr><tr><td>Cloud CDN 命中率低</td><td><b>調整 cache key，拿掉不影響內容的 protocol、query 參數、header</b></td><td class="muted">不要縮短過期時間，那只會更少命中</td></tr><tr><td>網路團隊管網路、開發團隊管 VM 但看不到網路設定</td><td><b>Shared VPC（host project 與 service project）</b></td><td class="muted">職責分離；各自最小權限</td></tr><tr><td>一台 VM 要同時連兩個彼此隔離的 VPC</td><td><b>多網卡（multi-NIC），或 Peering／NCC</b></td><td class="muted">舊題的標準答案是多網卡；現在也可考慮 NCC</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:hybrid">選擇器：混合雲</button><button class="jump" data-go="diagrams#fig-hybrid">圖解：混合雲連線</button></div></div></details><details class="dom bk" id="bk-iam"><summary><span class="dnum">34 題</span><span class="dtitle">組織、IAM 與身分</span><span class="dmeta">10 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">觀念題居多，答案幾乎都落在「最小權限、授權給群組、在資源階層上層統一管」這幾條原則。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>各部門要獨立管理 IAM，但要集中控管</td><td><b>單一 Organization，每個部門一個 Folder</b></td><td class="muted">多個 Organization 會失去集中管理；每專案單獨 owner 沒有概覽</td></tr><tr><td>某群組在 Org 層有 Owner，現在不准它在 Finance folder 建資源</td><td><b>把 Org 層的 Owner 拿掉，改在需要的 folder 個別授權</b></td><td class="muted">IAM 是各層聯集，上層給了下層拿不掉；只在下層「加」Viewer 無效</td></tr><tr><td>專案隨時開始與結束，同部門權限相同</td><td><b>Google Group ＋ Folder ＋ 授權給群組</b></td><td class="muted">新增專案自動繼承，不必逐一改</td></tr><tr><td>保留地端 Active Directory，要用既有帳號登入 Google Cloud</td><td><b>Cloud Directory Sync 同步帳號 ＋ SAML SSO</b></td><td class="muted">不同步密碼、不自建 AD 副本、不要求使用者改成一樣的密碼</td></tr><tr><td>VM 上的程式要用 Pub/Sub、BigQuery</td><td><b>掛服務帳戶並授 IAM 角色</b></td><td class="muted">不要存 OAuth token、不要下載金鑰</td></tr><tr><td>查詢費用都要記在同一個計費專案，使用者只能查不能改資料</td><td><b>計費專案給 BigQuery Job User，資料專案給 Data Viewer</b></td><td class="muted">費用記在「執行 job 的專案」</td></tr><tr><td>禁止網域外的身分取得權限</td><td><b>Org Policy：網域限制（iam.allowedPolicyMemberDomains）</b></td><td class="muted">事前阻擋，優於排程腳本定時移除</td></tr><tr><td>沒有 Google 帳號的人要在 24 小時內上傳檔案</td><td><b>Cloud Storage Signed URL，24 小時有效</b></td><td class="muted">不用建帳號、不用設密碼</td></tr><tr><td>資安團隊要看見整個組織</td><td><b>Org 層的檢視／Security Reviewer 類角色</b></td><td class="muted">只要看，不需要 Owner 或 Admin</td></tr><tr><td>30 個微服務要存資料庫密碼</td><td><b>Secret Manager</b></td><td class="muted">不放原始碼、環境變數或設定檔</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="diagrams#fig-iam">圖解：資源階層</button><button class="jump" data-go="picker:sec">選擇器：安全控制</button></div></div></details><details class="dom bk" id="bk-sec"><summary><span class="dnum">28 題</span><span class="dtitle">安全、合規與加密</span><span class="dmeta">13 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">出題方式多半是「法規或稽核要求 X，該用哪個控制」。記住每個控制各自解決什麼問題。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>縮小 PCI 範圍，但仍要分析付款方式趨勢</td><td><b>代幣化（tokenization），只存 token</b></td><td class="muted">敏感卡號集中在小範圍；分析用 token 即可</td></tr><tr><td>要把 GKE 用在 PCI 環境</td><td><b>可以：Google 提供工具，你要自己設計合規環境</b></td><td class="muted">共同責任；不是只有 App Engine 才能用，也不是一用就自動合規</td></tr><tr><td>要符合 GDPR</td><td><b>自己設計符合要求的資料安全架構</b></td><td class="muted">沒有一個「GDPR 開關」；用 Google 原生服務也不會自動合規</td></tr><tr><td>資料保存 N 年期間不得刪除或覆寫</td><td><b>retention policy ＋ Bucket Lock</b></td><td class="muted">鎖定後連管理員也無法縮短或解除</td></tr><tr><td>到期後要自動刪除</td><td><b>Object Lifecycle（Delete，條件 Age）</b></td><td class="muted">不要寫每晚刪除的腳本</td></tr><tr><td>存入資料庫前移除或遮蔽個資</td><td><b>Sensitive Data Protection（舊名 DLP）在管線中處理</b></td><td class="muted">自己寫 regex 容易漏；單純雜湊或加密不等於去識別化</td></tr><tr><td>金鑰要在 Google 外產生，資料在 BigQuery</td><td><b>匯入 Cloud KMS（或外部金鑰），以 CMEK 套在 dataset</b></td><td class="muted">金鑰輪替與停用由客戶掌控</td></tr><tr><td>防止內部人員、被入侵的程式或誤分享造成資料外洩</td><td><b>VPC Service Controls ＋ Private Google Access</b></td><td class="muted">IAM 管「誰」，VPC SC 管「從哪裡、到哪個邊界」</td></tr><tr><td>IAM 已授權，但只准從辦公室網路讀 bucket</td><td><b>VPC Service Controls 邊界 ＋ access level（辦公室 CIDR）</b></td><td class="muted">防火牆規則管不到 Cloud Storage API</td></tr><tr><td>只准通過驗證的容器上線</td><td><b>Binary Authorization ＋ CI/CD 簽署 attestation</b></td><td class="muted">單靠弱點掃描無法阻擋未簽署的映像</td></tr><tr><td>不同客戶的工作負載必須在實體分離的硬體</td><td><b>Sole-tenant node group ＋ node affinity 標籤</b></td><td class="muted">不是 network tag；affinity 才是排程到指定節點的機制</td></tr><tr><td>稽核員每年要看過去 12 個月 IAM 變更</td><td><b>Audit logs 匯出到 BigQuery，用授權視圖限縮範圍</b></td><td class="muted">查詢快、可限定欄位與期間</td></tr><tr><td>要能證明紀錄沒被竄改</td><td><b>對每筆紀錄與時間戳做數位簽章</b></td><td class="muted">限制誰能改資料表仍不是可驗證的真實性</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:sec">選擇器：安全控制</button><button class="jump" data-go="diagrams#fig-defense">圖解：VPC Service Controls</button></div></div></details><details class="dom bk" id="bk-data"><summary><span class="dnum">59 題</span><span class="dtitle">資料庫與儲存選型</span><span class="dmeta">11 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">最穩定的得分題：需求關鍵字固定對應某個產品。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>多 PB 的分析資料，分析師只會 SQL</td><td><b>BigQuery</b></td><td class="muted">不是 Cloud SQL 也不是平面檔案</td></tr><tr><td>每秒大量寫入、時間序列／IoT／感測器、依 key 低延遲讀取</td><td><b>Bigtable</b></td><td class="muted">hotspot 通常是 row key 設計問題：避免用時間戳或循序 ID 開頭</td></tr><tr><td>全球分散、強一致、關聯式、水平擴展、99.999%</td><td><b>Spanner multi-region</b></td><td class="muted">Cloud SQL 副本是唯讀非同步</td></tr><tr><td>傳統關聯式、MySQL／PostgreSQL 搬遷</td><td><b>Cloud SQL；HA 是同區域不同 zone 的備援</b></td><td class="muted">唯讀副本不是 HA；跨區副本才用於 DR</td></tr><tr><td>多個執行個體共用同一個 POSIX 檔案系統，需穩定寫入頻寬</td><td><b>Filestore</b></td><td class="muted">gcsfuse 是物件儲存掛載，不是高效能 POSIX</td></tr><tr><td>備份檔 90 天後自動刪除；依存取頻率降級</td><td><b>Lifecycle 規則（JSON）；或 Autoclass</b></td><td class="muted">規則不是 XML，也不用寫 cron</td></tr><tr><td>法規保存 N 年、很少讀</td><td><b>Archive（或 Coldline）＋ retention</b></td><td class="muted">按存取頻率選類別，不是只看容量</td></tr><tr><td>資料庫磁碟快滿，不能停機</td><td><b>線上擴大 PD，再在 OS 內擴檔案系統</b></td><td class="muted">擴容不需停機；增加 PD 大小同時提升 IOPS</td></tr><tr><td>Zone 故障後要最快、用最新資料恢復</td><td><b>Regional PD ＋ instance template</b></td><td class="muted">快照還原在同一 zone 沒有幫助</td></tr><tr><td>每個應用一張 BigQuery 表，45 天以前的紀錄要刪</td><td><b>分區表 ＋ partition expiration</b></td><td class="muted">整張表過期會把新資料一起刪</td></tr><tr><td>App Engine 要減少對 Cloud SQL 的查詢</td><td><b>以查詢雜湊為 key 的快取（Memcache，現為 Memorystore）</b></td><td class="muted">先查快取再查資料庫</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:db">選擇器：資料庫</button><button class="jump" data-go="picker:storage">選擇器：儲存</button></div></div></details><details class="dom bk" id="bk-pipe"><summary><span class="dnum">26 題</span><span class="dtitle">資料管線與分析</span><span class="dmeta">7 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">有一半會落在即時與批次、現有 Hadoop 程式的搬遷、以及舊案例的 IoT 場景。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>沒有舊程式，批次與串流都要</td><td><b>Dataflow（Apache Beam）</b></td><td class="muted">一套程式碼兩種模式</td></tr><tr><td>現有 Hadoop／Spark 作業，不想大改、少維運</td><td><b>Dataproc（現為 Managed Service for Apache Spark）</b></td><td class="muted">要省錢就用 Spot／preemptible 當 secondary worker</td></tr><tr><td>來源資料結構隨時會變，要能重新處理</td><td><b>先原封不動存進 Cloud Storage，再處理</b></td><td class="muted">直接寫進固定 schema 的資料表會丟掉原始樣貌</td></tr><tr><td>需要每天自動清理髒資料</td><td><b>可排程的資料準備或轉換工作</b></td><td class="muted">別為每日清理常駐一台串流作業或 VM</td></tr><tr><td>要求嚴格先進先出、不重複</td><td><b>Pub/Sub 排序鍵＋ exactly-once，或下游 Dataflow 去重</b></td><td class="muted">舊答案是 Pub/Sub → Dataflow；現在 Pub/Sub 本身也支援排序與 exactly-once 投遞</td></tr><tr><td>數十億筆裝置遙測，要大規模進入分析</td><td><b>裝置 → Pub/Sub → Dataflow → BigQuery</b></td><td class="muted">舊題用 IoT Core，該服務已退役，改成 Pub/Sub 加裝置身分驗證</td></tr><tr><td>需要看懂預測是怎麼來的</td><td><b>Explainable AI</b></td><td class="muted">不是 Vision AI、也不是 Notebook</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:data">選擇器：資料處理</button></div></div></details><details class="dom bk" id="bk-k8s"><summary><span class="dnum">58 題</span><span class="dtitle">GKE、容器與無伺服器</span><span class="dmeta">14 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">題量大但規則單純。多數是「用哪個代管選項最省維運」，以及 GKE 的日常操作。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>閒時要縮到 0，不想管主機</td><td><b>Cloud Run（單函式用 Cloud Run functions）</b></td><td class="muted">GKE 與 MIG 至少要保留節點</td></tr><tr><td>流量不可預測，維運要最少，Go／Python 等標準語言</td><td><b>App Engine standard 或 Cloud Run</b></td><td class="muted">Flexible 與 MIG 的維運較多</td></tr><tr><td>GKE 自動隨 CPU 增減節點</td><td><b>HPA（Pod 層）＋ Cluster Autoscaler（節點層）</b></td><td class="muted">只調底層 MIG 或只用 HPA 都不完整</td></tr><tr><td>需要穩定的主機名稱</td><td><b>StatefulSet</b></td><td class="muted">Deployment 的 Pod 名稱每次重建都會變</td></tr><tr><td>內部微服務互相呼叫，副本數會變</td><td><b>Deployment ＋ Service，用 Service DNS 名稱</b></td><td class="muted">Pod IP 不穩定</td></tr><tr><td>對外 HTTPS，自動擴展</td><td><b>HPA ＋ Cluster Autoscaler ＋ Ingress／Gateway</b></td><td class="muted">Service type LoadBalancer 屬於 L4</td></tr><tr><td>Pod 一直重啟，要看原因</td><td><b>看 Cloud Logging 該容器的 stdout 紀錄</b></td><td class="muted">進節點逐台翻不是首選</td></tr><tr><td>正式發布常因 production 專用設定出錯</td><td><b>liveness／readiness probe，讓壞版本不接流量</b></td><td class="muted">滾動更新時會自動擋住</td></tr><tr><td>Cloud Run 或 App Engine 想用少量真實流量驗證新版</td><td><b>Cloud Run 流量百分比；App Engine 版本流量分配</b></td><td class="muted">不必另建 LB</td></tr><tr><td>縮小 GKE 攻擊面</td><td><b>private cluster ＋ private endpoint ＋ master authorized networks</b></td><td class="muted">public endpoint 即使限制來源仍暴露在外</td></tr><tr><td>私有 GKE 節點要連第三方網站</td><td><b>Cloud NAT</b></td><td class="muted">Private Google Access 只通 Google API</td></tr><tr><td>Pod 處理 Pub/Sub 訊息太慢（I/O 密集）</td><td><b>依訂閱積壓量等自訂／外部指標做 HPA</b></td><td class="muted">CPU 不高，用 CPU 指標不會擴展</td></tr><tr><td>要驗證某個微服務掛掉時系統的行為</td><td><b>Istio／Cloud Service Mesh 的故障注入</b></td><td class="muted">直接破壞節點影響範圍太大</td></tr><tr><td>Dockerfile 部署太慢</td><td><b>用精簡基底映像；依賴先裝、原始碼最後才複製</b></td><td class="muted">利用層快取；換更大的機器沒有幫助</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:compute">選擇器：運算</button><button class="jump" data-go="picker:deploy">選擇器：發布策略</button></div></div></details><details class="dom bk" id="bk-ops"><summary><span class="dnum">40 題</span><span class="dtitle">日誌、監控與疑難排解</span><span class="dmeta">10 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">「先做什麼」型的題目很多：先看資料、先回滾，再診斷。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>微服務鏈中不知道哪一段慢</td><td><b>Cloud Trace</b></td><td class="muted">Monitoring 只告訴你「慢」，Trace 才拆出每一段</td></tr><tr><td>新版本上線後部分使用者載入 30 秒</td><td><b>先回滾到已知良好版本，再在非正式環境用 Trace 與 Logging 診斷</b></td><td class="muted">先止血；不要在正式環境反覆發布除錯</td></tr><tr><td>應用「變慢好幾天」，問第一步</td><td><b>先看 Cloud Logging 與 Monitoring 的紀錄與指標</b></td><td class="muted">還沒找到原因就加大機器或還原備份是亂槍打鳥</td></tr><tr><td>延遲高於門檻一段時間就要告警</td><td><b>定義 SLO，再用 SLO 建立告警政策</b></td><td class="muted">SRE 做法，比自訂指令碼穩</td></tr><tr><td>偵測到防火牆被改或主機被入侵要快速反應</td><td><b>log sink → Pub/Sub → Cloud Run functions</b></td><td class="muted">事件驅動；輪詢查詢太慢</td></tr><tr><td>指標或日誌要保存 5 年供法律程序</td><td><b>匯出到 Cloud Storage（需分析則匯到 BigQuery）</b></td><td class="muted">預設保留期不夠</td></tr><tr><td>只取某 folder 下所有生產專案的日誌，新專案要自動納入</td><td><b>在該 folder 建 aggregated sink</b></td><td class="muted">每專案各建一個會漏；放在 Org 層會多收</td></tr><tr><td>要收集 VM 的系統日誌</td><td><b>安裝 Ops Agent</b></td><td class="muted">Admin Activity 稽核日誌預設就有，但 VM 內的紀錄不會自動收集</td></tr><tr><td>Firewall Insights 沒有任何資料</td><td><b>對規則啟用 Firewall Rules Logging</b></td><td class="muted">VPC flow logs 是另一回事</td></tr><tr><td>看每個使用者過去一個月跑了幾次 BigQuery 查詢</td><td><b>Cloud Audit Logs（Data Access）</b></td><td class="muted">可再匯出到 BigQuery 分析</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="domains#sub-6.1">考綱 6.x 營運</button></div></div></details><details class="dom bk" id="bk-dr"><summary><span class="dnum">28 題</span><span class="dtitle">高可用、DR 與測試</span><span class="dmeta">7 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">題目一律要求你先分辨：要撐過的是 zone 故障還是 region 故障。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>要撐過 zone 故障</td><td><b>Regional MIG、Regional PD、Cloud SQL HA</b></td><td class="muted">同區域多 zone 即可</td></tr><tr><td>要撐過 region 故障</td><td><b>另一區域的 instance group ＋ 全球 LB ＋ 跨區資料複寫</b></td><td class="muted">把 standby 放在地端不是 Google 建議</td></tr><tr><td>備援資料庫在高峰日當機卻沒有接手</td><td><b>定期演練 failover</b></td><td class="muted">沒演練過的備援常常升不了主</td></tr><tr><td>演練災難：關掉整個 zone 的 VM</td><td><b>用 IaC 自動佈建，用 Cloud Monitoring 觀察</b></td><td class="muted">手動腳本難以重現</td></tr><tr><td>單一 Cloud SQL 掛掉資料損失要最少</td><td><b>自動備份 ＋ binary logging（時間點還原）</b></td><td class="muted">分片與唯讀副本不是為此設計</td></tr><tr><td>要替上千 VM 的 Spot／preemptible 做優雅關機</td><td><b>shutdown-script 中繼資料</b></td><td class="muted">VM 被搶佔前有短暫時間執行</td></tr><tr><td>對新系統做負載測試</td><td><b>獨立專案，重放或模擬真實使用者流量，連第三方依賴也要測</b></td><td class="muted">不要排程打 production</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="diagrams#fig-dr">圖解：多區域與 DR</button><button class="jump" data-go="basics#b-rel">基礎：可用性計算器</button></div></div></details><details class="dom bk" id="bk-cicd"><summary><span class="dnum">38 題</span><span class="dtitle">CI/CD、部署與 IaC</span><span class="dmeta">7 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">考的是「怎麼降低風險」與「Google 建議的工具」。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>降低 production 回滾次數</td><td><b>藍綠部署、canary、更小批量、自動化測試</b></td><td class="muted">把 QA 環境換成 canary 並不能取代測試</td></tr><tr><td>只讓測試通過的版本進 production</td><td><b>Git tag 流程：staging tag 測試通過後才標 production tag；或以 Binary Authorization 強制</b></td><td class="muted">本機 pre-commit hook 可被繞過</td></tr><tr><td>部署要可追溯到 commit</td><td><b>容器標籤使用 commit hash</b></td><td class="muted">latest 標籤無法稽核</td></tr><tr><td>MIG 新 VM 啟動要快，套件很多</td><td><b>把相依套件預先做進自訂映像</b></td><td class="muted">startup script 現裝很慢</td></tr><tr><td>只讓新建立的 VM 用新範本，不動現有執行個體</td><td><b>滾動更新選 Opportunistic</b></td><td class="muted">Proactive 會主動替換現有 VM</td></tr><tr><td>基礎設施即程式碼</td><td><b>Terraform／Infrastructure Manager</b></td><td class="muted">Deployment Manager 已於 2026-03-31 結束支援，舊題「推廣 Deployment Manager」的邏輯已過時</td></tr><tr><td>在不降低速度的前提下降低安全錯誤</td><td><b>CI/CD 內加入靜態程式碼分析與弱點掃描</b></td><td class="muted">每次都要資安專家審查會拖慢發布</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:deploy">選擇器：發布策略</button><button class="jump" data-go="diagrams#fig-supply">圖解：交付流程</button></div></div></details><details class="dom bk" id="bk-mig"><summary><span class="dnum">26 題</span><span class="dtitle">遷移與資料傳輸</span><span class="dmeta">7 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">判斷基準通常是「資料量 ÷ 頻寬」算出的傳輸時間；下面的小工具可以直接算。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>數十 TB 以上，頻寬不足</td><td><b>Transfer Appliance（資料上傳後在 Google 端 rehydrate）</b></td><td class="muted">75 TB、或 900 TB 加 100 Mbps 都是典型</td></tr><tr><td>從 S3 等其他雲或 HTTP 來源搬資料</td><td><b>Storage Transfer Service</b></td><td class="muted">不要先下載再上傳</td></tr><tr><td>VMware 上的 Linux VM 要 lift and shift</td><td><b>先評估與依賴分組，再分批用 Migrate to Virtual Machines</b></td><td class="muted">舊名 Migrate for Compute Engine</td></tr><tr><td>MySQL 搬到 Cloud SQL，要求停機最短且不遺失資料</td><td><b>先持續複寫，再於切換視窗停寫並切換</b></td><td class="muted">停機後 dump 再匯入，資料量大時停機太久</td></tr><tr><td>要沿用地端 Windows Server 授權</td><td><b>Sole-tenant node（BYOL）</b></td><td class="muted">一般 VM 與授權費用綁在一起</td></tr><tr><td>上傳完要驗證與地端一致</td><td><b>比對雜湊（CRC32C／MD5），gcloud storage 內建</b></td><td class="muted">下載回來再算一次是最貴的做法</td></tr><tr><td>要複製一台 VM 到另一專案與區域</td><td><b>建立自訂映像或 machine image，在目標建立 VM</b></td><td class="muted">dd 加 netcat 難以維護</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="picker:transfer">選擇器：資料傳輸</button><button class="jump" data-go="basics#b-mig">基礎：遷移 6R</button></div></div></details><details class="dom bk" id="bk-cost"><summary><span class="dnum">25 題</span><span class="dtitle">成本、流程與商業</span><span class="dmeta">7 條考點</span></summary>
+<div style="padding:0 18px 16px;display:grid;gap:12px"><p class="muted small">常常是「最便宜且符合 Google 最佳實務」，答案往往是流程或訓練，而不是又多開一種服務。</p>
+<div class="tbl"><table><thead><tr><th>題目線索</th><th>答案方向</th><th>理由與陷阱</th></tr></thead><tbody><tr><td>新創不知道需求，要控制成本</td><td><b>free tier ＋ 自動的 sustained use，並訓練團隊</b></td><td class="muted">承諾使用折扣需要穩定可預測的用量</td></tr><tr><td>開發 VM 一天多次啟停，狀態要保留</td><td><b>停止 VM、保留磁碟；帳單匯出到 BigQuery 並用 labels 分攤</b></td><td class="muted">刪除磁碟會遺失狀態</td></tr><tr><td>非上班時間要省錢</td><td><b>排程自動停止開發與驗收環境的 VM</b></td><td class="muted">手動或在 production VM 上跑指令碼風險高</td></tr><tr><td>要快速找出閒置 VM</td><td><b>Recommender（idle VM recommendation）</b></td><td class="muted">不要逐台登入</td></tr><tr><td>可中斷的批次工作</td><td><b>Spot／preemptible VM</b></td><td class="muted">要搭配檢查點與重試</td></tr><tr><td>評估團隊能力並兼顧成本</td><td><b>編列訓練預算，依角色規劃證照路線圖</b></td><td class="muted">全面外包不會累積內部能力</td></tr><tr><td>API 要做不相容的大改版，又不能影響客戶</td><td><b>版本化 API，舊版繼續服務並公告淘汰時程</b></td><td class="muted">只發通知信或只更新文件都不夠</td></tr></tbody></table></div>
+<div class="rel"><span>延伸</span><button class="jump" data-go="basics#b-cost">基礎：計價</button><button class="jump" data-go="domains#sub-4.1">考綱 4.x 流程與商業</button></div></div></details></div>
+  </div>
+
+  <div class="sec" id="bk-cases">
+    <h2>案例題：舊案例還有什麼可以用</h2>
+    <p class="lead">題庫的案例題來自 EHR Healthcare、Helicopter Racing League、Mountkirk Games、TerramEarth、JencoMart、Dress4Win。其中只有 <b>EHR Healthcare</b> 仍在 2026 版出現；其他已移除，但它們考的模式可以遷移。<b>EHR 的題目要拿你現在看到的案例原文再核對一次</b>，因為內容可能已更新。</p>
+    <div class="grid2">
+      <div class="sheet sec"><h3>EHR Healthcare 舊題的考點</h3><ul class="clean">
+        <li><b>隱私稽核</b>：與 Google 簽 BAA，並確認使用的產品在合規產品清單內。</li>
+        <li><b>只部署已驗證的容器</b>：Binary Authorization ＋ CI/CD 簽署。</li>
+        <li><b>專線升級</b>：新增一條 Dedicated Interconnect，而不是只加 VPN 或升頻寬；99.99% 要兩個 metro 各兩條。</li>
+        <li><b>縮小 GKE 攻擊面</b>：private cluster ＋ private endpoint ＋ master authorized networks。</li>
+        <li><b>外部 IP 只給前端</b>：Org Policy constraint。</li>
+        <li><b>Pub/Sub 發佈延遲</b>：與批次設定有關，批次越大延遲越高。</li></ul>
+        <div class="rel"><button class="jump" data-go="cases:ehr">前往 EHR 案例</button></div></div>
+      <div class="sheet sec"><h3>其他舊案例的可遷移模式</h3><ul class="clean">
+        <li><b>大量 IoT 遙測</b>（TerramEarth）：裝置 → Pub/Sub → Dataflow → BigQuery；舊答案用 IoT Core，現在改成 Pub/Sub 加裝置身分。</li>
+        <li><b>成本與保存</b>（TerramEarth）：區域 bucket ＋ Coldline／Archive 降級，跨區彙整前先在地壓縮。</li>
+        <li><b>無伺服器多區域</b>：Cloud Run 多區域 ＋ serverless NEG ＋ 全球 LB。</li>
+        <li><b>預測與 ML</b>（HRL）：Explainable AI、依賽季分區的 BigQuery。</li>
+        <li><b>授權給第三方經銷商</b>：OAuth，而不是來源 IP 或共用憑證。</li>
+        <li><b>找閒置 VM</b>：Recommender。</li>
+        <li><b>自動擴展失靈先查什麼</b>（Mountkirk）：專案配額，其次才是程式。</li></ul></div>
+    </div>
+  </div>
+
+  <div class="sec" id="bk-xfer">
+    <h2>傳輸時間估算</h2>
+    <p class="lead">資料量與頻寬的題目先算時間，再決定是否要離線傳輸。實際效率通常是 60–80%。</p>
+    <div class="sheet calc">
+      <div class="crow" style="grid-template-columns:minmax(0,1fr) 9rem"><span>資料量（TB）</span><input type="number" id="xfTB" value="75" min="0" step="1"></div>
+      <div class="crow" style="grid-template-columns:minmax(0,1fr) 9rem"><span>可用頻寬（Mbps）</span><input type="number" id="xfMb" value="1000" min="1" step="100"></div>
+      <div class="crow" style="grid-template-columns:minmax(0,1fr) 9rem"><span>實際效率（%）</span><input type="number" id="xfEf" value="80" min="10" max="100" step="5"></div>
+      <div class="calc-out"><div><span>傳輸時間</span><b id="xfT">—</b></div><div><span>建議</span><b id="xfR" style="font-size:.95rem;font-family:var(--f-body)">—</b></div><div><span>公式</span><b style="font-size:.8rem">TB×8×10⁶ ÷ (Mbps×效率)</b></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>最常見的十個誤選</h2>
+    <div class="tbl"><table><thead><tr><th>容易這樣想</th><th>實際上</th></tr></thead><tbody><tr><td>看到 Dedicated Interconnect 就選</td><td>頻寬很低又要省錢時，HA VPN 才是答案。</td></tr><tr><td>把 read replica 當成高可用</td><td>唯讀副本不會自動接手寫入；HA 才是同步備援。</td></tr><tr><td>以為在下層加 Viewer 就能收回上層的 Owner</td><td>IAM 是聯集，只能從上層拿掉。</td></tr><tr><td>把防火牆規則當成 Google API 的存取控制</td><td>要用 VPC Service Controls。</td></tr><tr><td>用 Cloud NAT 解決連 Google API 的問題</td><td>那是 Private Google Access 的工作；NAT 是連網際網路。</td></tr><tr><td>用腳本輪詢取代事件觸發</td><td>Google 偏好 log sink → Pub/Sub → 函式。</td></tr><tr><td>事故發生先加大機器或還原備份</td><td>先看指標與日誌；有新版本就先回滾。</td></tr><tr><td>Bigtable 熱點就加節點</td><td>先檢查 row key 是否循序（尤其是時間戳開頭）。</td></tr><tr><td>沒算傳輸時間就選上傳</td><td>資料量 ÷ 頻寬，超過期限才用 Transfer Appliance。</td></tr><tr><td>看到「舊產品名稱」就以為是別的服務</td><td>Stackdriver、Container Engine 等只是舊名。</td></tr></tbody></table></div>
+  </div>
+
+  <div class="sec" id="bk-old">
+    <h2>題庫裡的舊產品對照</h2>
+    <p class="lead">題庫看到左邊這些名字時，把它換成右邊再判斷，千萬不要因為「這個服務好像不存在」就排除選項。</p>
+    <div class="tbl"><table><thead><tr><th>題庫裡的舊名</th><th>現在</th></tr></thead><tbody><tr><td><span class="old">Stackdriver（Logging／Monitoring／Trace／Debugger）</span></td><td>Cloud Logging、Monitoring、Trace（Cloud Operations）；Debugger 已退役</td></tr><tr><td><span class="old">Google Container Engine／Container Registry</span></td><td>GKE／Artifact Registry</td></tr><tr><td><span class="old">Cloud Datastore</span></td><td>Firestore（Datastore mode）</td></tr><tr><td><span class="old">Cloud ML Engine／AI Platform</span></td><td>Gemini Enterprise Agent Platform（前身 Vertex AI）</td></tr><tr><td><span class="old">Cloud IoT Core</span></td><td>已於 2023 年退役；改以 Pub/Sub 加裝置身分驗證</td></tr><tr><td><span class="old">Deployment Manager</span></td><td>2026-03-31 結束支援；改用 Terraform／Infrastructure Manager</td></tr><tr><td><span class="old">Spinnaker、Jenkins 式交付</span></td><td>Cloud Build ＋ Cloud Deploy</td></tr><tr><td><span class="old">Migrate for Compute Engine</span></td><td>Migrate to Virtual Machines</td></tr><tr><td><span class="old">Cloud DLP</span></td><td>Sensitive Data Protection</td></tr><tr><td><span class="old">Cloud Functions</span></td><td>Cloud Run functions</td></tr><tr><td><span class="old">gsutil</span></td><td>gcloud storage（gsutil 仍在舊題中大量出現）</td></tr><tr><td><span class="old">Dataproc／Cloud Composer</span></td><td>Managed Service for Apache Spark／Airflow</td></tr><tr><td><span class="old">Anthos、Cloud Run for Anthos</span></td><td>GKE Enterprise／Cloud Run</td></tr><tr><td><span class="old">Direct／Carrier Peering</span></td><td>現行指南以 Interconnect 與 HA VPN 為主</td></tr><tr><td><span class="old">App Engine Memcache</span></td><td>Memorystore</td></tr></tbody></table></div>
+    <p class="muted small">Deployment Manager 的結束日期來自 Google 官方的停用公告；其餘改名與退役依各產品文件與發行說明整理。</p>
+  </div>
+
+  <div class="rel"><span>接著</span><button class="jump" data-go="quiz">用 78 題驗證</button><button class="jump" data-go="cards">速記卡</button></div>
+  <div class="nextnav" data-for="bank"></div>
+</section>
+
 <section class="panel" id="p-quiz" data-panel="quiz" hidden>
   <div class="chap">
-    <span class="eyebrow">第 7 站 · 練習與模擬考</span>
+    <span class="eyebrow">第 8 站 · 練習與模擬考</span>
     <h2><span class="qcount">56</span> 題原創情境題</h2>
     <p class="why">依考綱與官方案例撰寫，風格貼近正式考試：長情境、找限制條件、選「最佳」而非「可行」。作答後<b>每個選項都會顯示對或錯的理由</b>，請確定自己說得出「為什麼其他三個不對」再往下。熟悉之後切到<b>模擬考</b>：隨機 20 題、48 分鐘（與正式考試每題約 2.4 分鐘的節奏相同），交卷後才看答案。</p>
     <div class="modebar" id="qMode"><button class="chip" data-mode="practice" aria-pressed="true">練習模式</button><button class="chip" data-mode="mock" aria-pressed="false">模擬考（20 題 · 48 分鐘）</button></div>
@@ -1334,7 +1449,7 @@ td code{white-space:normal}
 <!-- ============ CARDS ============ -->
 <section class="panel" id="p-cards" data-panel="cards" hidden>
   <div class="chap">
-    <span class="eyebrow">第 8 站 · 速記卡</span>
+    <span class="eyebrow">第 9 站 · 速記卡</span>
     <h2>考前一天的數字與定義</h2>
     <p class="why">SLA、最短儲存天數、頻寬、日誌保留期這類細節，在選項裡常是決勝點。點卡片翻面，按<b>「記得」或「還不熟」</b>標記，之後可以只複習還不熟的卡片。</p>
     <div class="modebar" id="fcFilter"><button class="chip" data-f="all" aria-pressed="true">全部</button><button class="chip" data-f="weak" aria-pressed="false">只看還不熟</button><span class="mono muted small" id="fcStat"></span></div>
@@ -1362,6 +1477,30 @@ td code{white-space:normal}
     <p class="mono muted small" id="planText"></p>
   </div>
   <div class="sheet" id="planList"></div>
+  <div class="sec" id="examday">
+    <h2>報名到考完的實際流程（台灣考生經驗）</h2>
+    <p class="lead">以下來自你提供的考生筆記（2026/03 更新畫面）。<b>報名平台與考場可能變動</b>：筆記寫 Webassessor（Kryterion），本手冊先前依官方頁面寫 CM Connect／Pearson VUE。報名前請以官方認證頁面當下的導引為準。</p>
+    <div class="grid2">
+      <div class="sheet sec"><h3>去考場</h3><ul class="clean">
+        <li>筆記中的台北考場為恆逸教育訓練中心（松山區復興北路 99 號 14 樓），以報名系統顯示為準。</li>
+        <li>帶<b>身分證</b>，以及<b>有英文姓名的第二證件</b>（護照或信用卡）。</li>
+        <li>假日考試若提早到、剛好有空位，櫃檯可能問你要不要提早開始（只能提早）。</li>
+        <li>流程：報到驗證件 → 檢查口袋、褲管、眼鏡 → 物品進置物櫃 → 進小型考場作答。案例題在最前面。</li>
+        <li><b>交卷前確認每題都有作答</b>；交卷後有約 15 題的問卷，之後螢幕直接顯示是否通過。</li></ul></div>
+      <div class="sheet sec"><h3>線上監考</h3><ul class="clean">
+        <li>先在報名網站的「My assessment」安裝指定考試程式並拍照。</li>
+        <li>空間只留桌子、椅子、電腦，建議用個人電腦。</li>
+        <li>報到連結只在考試時間前 10 分鐘到後 20 分鐘出現。</li>
+        <li>要拍證件（護照可）、人臉，以及房間四周（前後左右與斜角）；監考確認後才進入考試頁面。</li>
+        <li>交卷後立即顯示結果。</li></ul></div>
+    </div>
+    <div class="sheet sec"><h3>考完之後與幾個傳言</h3><ul class="clean">
+      <li>證書約兩天後發出；到 Credly 把證照設為公開即可下載 PDF。</li>
+      <li>筆記提到考完會拿到下次考試的半價券，以及活動期間有折扣碼；這些都會變動，不要為此延後備考。</li>
+      <li>「答對約 7 成就會過」是社群說法，Google 並未公布及格標準，請當作參考而非保證。</li>
+      <li>筆記寫考 50 題；官方是 50–60 題，題數可能不同。</li></ul>
+      <div class="rel"><span>另見</span><button class="jump" data-go="res">資源頁的題庫與筆記連結</button></div></div>
+  </div>
   <div class="nextnav" data-for="plan"></div>
 </section>
 
@@ -1373,7 +1512,7 @@ td code{white-space:normal}
     <p class="why">建議順序：<b>官方考試指南與案例原文</b>是唯一的權威來源；書籍與課程補足理解；最後用官方範例題與練習題檢驗。所有連結會在新分頁開啟。</p>
   </div>
 
-  <div class="callout"><b>關於「考古題」：</b>網路上標榜「real exam questions / dumps」的題庫，內容來自洩漏的正式考題，違反 Google 認證考試協議，被查到可能被撤銷證照並禁考；而且考題持續改版，答案常常是錯的。建議只把練習題當作檢驗理解的工具，每題都要能說出「為什麼其他選項不對」。</div>
+  <div class="callout"><b>關於「考古題」：</b>標榜「real exam questions」的題庫，可能牴觸 Google 認證考試協議，而且考題持續改版，答案常常是錯的。你提供的 ExamTopics 題庫（2025-01 版）已被整理成「題庫考點」一章：只保留考點與判斷規則，並另寫原創題。建議每題都要能說出「為什麼其他選項不對」。<button class="jump" data-go="bank">前往題庫考點</button></div>
 
   <div class="grid2">
     <div class="sheet sec">
@@ -1431,6 +1570,10 @@ td code{white-space:normal}
       <p class="muted" style="font-size:.88rem">2026 年考過的人普遍回饋：GKE 與 Google AI 產品的題目比題庫難，題庫只能當練習。</p>
     </div>
   </div>
+  <div class="sheet sec"><h3>題庫與社群筆記</h3><ul class="clean res">
+    <li><a href="https://www.examprepper.co/exams" target="_blank" rel="noopener">ExamPrepper</a><span>社群整理的刷題網站。題目多半是舊版，只拿來練習判斷，不要背答案。</span></li>
+    <li><a href="https://jayendrapatil.com/" target="_blank" rel="noopener">Jayendra's Blog</a><span>各雲端證照的長篇筆記。</span></li>
+    <li><span>ExamTopics 題庫（你提供的 PDF）</span><span>已整理成「題庫考點」一章。注意版本舊、答案有爭議。</span></li></ul></div>
   <div class="nextnav" data-for="res"></div>
 </section>
 
@@ -2017,7 +2160,29 @@ const QUIZ = [
   ["車端執行輕量模型處理即時功能，資料在本地緩衝，連線恢復後再上傳到 Pub/Sub","即時功能不依賴網路，資料也不會遺失。"],
   ["要求駕駛只在有訊號的地區使用","不是技術解法，也傷害體驗。"],
   ["每台車改裝衛星網路","成本極高，而且仍需處理斷線情況。"]],
-  a:[1],e:"不可靠的網路 → 邊緣處理 ＋ 本地緩衝 ＋ 恢復後同步。",c:"reliable connectivity in rural areas · real-time AI features",r:[["案例：KnightMotives","cases:km"]]}
+  a:[1],e:"不可靠的網路 → 邊緣處理 ＋ 本地緩衝 ＋ 恢復後同步。",c:"reliable connectivity in rural areas · real-time AI features",r:[["案例：KnightMotives","cases:km"]]},
+ {"d": "D2", "q": "某公司的地端系統只需要和 Google Cloud 內的記帳服務交換少量資料，平均流量約 300 kbps，但合約要求連線可用度達 99.99%，同時預算有限。應該如何連線？", "o": [["購買 Dedicated Interconnect，單一 metro 兩條 10 Gbps 連線", "頻寬遠超需求、費用高，單一 metro 也達不到 99.99% 的 SLA。"], ["建立 HA VPN 閘道，並依文件設定兩條 tunnel 連到地端 VPN 裝置", "HA VPN 在兩條 tunnel 並符合設定要求時提供 99.99% SLA，成本遠低於專線，頻寬需求小也足夠。"], ["建立一條 Classic VPN tunnel 並加上 Cloud Router", "Classic VPN 的 SLA 較低，單一 tunnel 也沒有備援。"], ["用 VPC Network Peering 連到地端網路", "Peering 只用於 VPC 之間，不能連地端資料中心。"]], "a": [1], "e": "頻寬很低、可用度要高、預算有限，是 HA VPN 的典型情境；只有頻寬或延遲大幅提高時才需要 Interconnect。", "c": "300 kbps · 99.99% availability · limited budget", "r": [["選擇器：混合雲", "picker:hybrid"]]},
+ {"d": "D2", "q": "資安要求所有 Compute Engine 都不能有外部 IP，只有少數經核准的前端 VM 例外，並要在整個組織強制執行，避免專案管理員自行改設定。應該怎麼做？", "o": [["對所有專案的 networkAdmin 角色設定 deny，並請管理員自行遵守", "不是可強制的控制，也會誤傷網路維運工作。"], ["在 Organization 設定 constraints/compute.vmExternalIpAccess，只列出允許的 VM", "Org Policy 在組織層強制，並可用清單指定例外 VM，專案管理員無法繞過。"], ["移除每個 VPC 的預設路由，並為核准 VM 另建有網際網路路由的子網路", "只影響路由，不能防止有人替 VM 設定外部 IP，也難以覆蓋所有 VPC。"], ["每晚用 Cloud Scheduler 加 Cloud Run functions 找出並移除未核准的外部 IP", "事後偵測再修正，期間仍然暴露，且要維護程式碼。"]], "a": [1], "e": "「在整個組織強制」且「有例外清單」，答案是 Organization Policy 的 constraint。預防優於偵測。", "c": "enforce across the organization · exceptions only", "r": [["選擇器：安全控制", "picker:sec"]]},
+ {"d": "D3", "q": "資料分析師已有讀取 Cloud Storage bucket 的 IAM 權限，但公司要求他們只能在辦公室網路內讀取機敏資料，在家連線一律拒絕。最適當的做法是什麼？", "o": [["在 VPC 加防火牆規則，只允許辦公室 CIDR 的流量", "防火牆規則管的是 VM 流量，管不到 Cloud Storage API。"], ["建立 VPC Service Controls 邊界涵蓋該專案，並以辦公室 CIDR 建立 access level", "VPC SC 針對 Google API 設邊界，access level 依來源網路限制存取，IAM 權限不變。"], ["把分析師從 bucket 的 IAM 移除，改用 Signed URL 發放", "Signed URL 無法依來源網路限制，也不利管理。"], ["要求分析師一律先連到公司 VPN，並關閉 Cloud Storage 公開存取", "VPN 與公開存取設定都不會限制已有 IAM 權限的人從外部呼叫 API。"]], "a": [1], "e": "IAM 管誰；限制「從哪裡」存取 Google 託管服務的 API，用 VPC Service Controls 加 access level。", "c": "prevent retrieving data from outside the office network", "r": [["圖解：縱深防禦", "diagrams#fig-defense"]]},
+ {"d": "D3", "q": "支付團隊要保存信用卡號以辨識重複卡片，並滿足縮小 PCI 範圍、能每年輪替金鑰，同時分析團隊需要統計各付款方式的趨勢。應該怎麼設計？", "o": [["把完整卡號放進 Secret Manager，並依需要查詢", "Secret Manager 是放密碼與金鑰用的，不適合當卡號資料庫，卡號仍在範圍內。"], ["建立代幣化服務：以確定性加密產生 token，只在受控服務保存卡號，其他系統只使用 token", "確定性加密可辨識重複；token 讓分析系統完全不接觸卡號，PCI 範圍縮到最小，金鑰可輪替。"], ["把卡號放在全部服務共用的 Cloud SQL，並以角色限制讀取", "所有系統仍在 PCI 範圍內。"], ["使用標準雜湊（不加鹽）並保存在 BigQuery", "沒有金鑰輪替機制，也不是令牌化，雜湊可被字典攻擊還原。"]], "a": [1], "e": "縮小 PCI 範圍的關鍵是令牌化：敏感資料只留在少數系統，其餘都用 token。", "c": "smallest scope of PCI · analyze trends", "r": [["選擇器：安全控制", "picker:sec"]]},
+ {"d": "D1", "q": "一個 Cloud SQL 執行個體跑在單一 zone。要在 zone 故障時自動接手且資料不遺失，還要保持同一個連線位址。應該怎麼做？", "o": [["在不同區域建立唯讀副本，故障時手動升為主要", "跨區副本是非同步的，會遺失資料，也需要手動切換並更換位址。"], ["啟用高可用性（HA）設定，讓系統在同區域的另一個 zone 維護同步備援", "HA 的 standby 與主機同步複寫，故障時自動容錯移轉，位址不變。"], ["在同一個 zone 建立另一個唯讀副本", "同一個 zone 故障時兩者一起掛掉。"], ["每小時做一次快照並在故障時還原", "還原需要時間，也會遺失快照之後的資料。"]], "a": [1], "e": "HA 負責 zone 故障，read replica 負責讀取擴展與跨區 DR。兩者的目的不要混淆。", "c": "zonal outage · automatic · no data loss", "r": [["選擇器：資料庫", "picker:db"]]},
+ {"d": "D2", "q": "需要一條 99.99% 的專線連到地端資料中心，頻寬 20 Gbps。哪一種設計符合 Google 建議？", "o": [["同一個 metro 兩個不同 edge 可用區各一條 Dedicated Interconnect", "單一 metro 只能達到較低等級 SLA。"], ["兩個不同 metro，各自兩條 Dedicated Interconnect，並連到不同的 edge 可用區", "99.99% 需要兩個 metro、每個 metro 兩條連線，並交給 Cloud Router 做動態路由。"], ["一條 100 Gbps 的 Dedicated Interconnect 加一條 Cloud VPN", "兩者只是備援，不是 99.99% 的標準拓樸。"], ["兩條 Partner Interconnect 在同一個 metro", "可用度與頻寬都不足。"]], "a": [1], "e": "99.99% 的 Interconnect 拓樸＝兩個 metro × 每個 metro 兩條連線。", "c": "99.99% · dedicated · 20 Gbps", "r": [["選擇器：混合雲", "picker:hybrid"]]},
+ {"d": "D5", "q": "你要發布 MIG 的新 instance template，但不想動任何正在服務的 VM，只要之後新建立的 VM 使用新範本。滾動更新應該選哪個模式？", "o": [["Proactive 並將 maxSurge 設為 0", "Proactive 會主動替換現有 VM。"], ["Opportunistic", "Opportunistic 只在 MIG 因擴展或修復建立新 VM 時使用新範本，不會替換運行中的 VM。"], ["Rolling restart", "只會重啟既有 VM，並不更換範本。"], ["Rolling replace", "會逐台替換現有 VM。"]], "a": [1], "e": "「不要動現有執行個體」＝ Opportunistic。需要立即全面更新才用 Proactive。", "c": "do not update any running instances", "r": [["選擇器：發布策略", "picker:deploy"]]},
+ {"d": "D6", "q": "安全團隊要在防火牆規則被修改、或可疑主機活動出現的幾秒內自動反應（例如通知並隔離），並遵循 Google 建議作法。應該怎麼設計？", "o": [["每分鐘由 Cloud Scheduler 觸發查詢 Cloud Logging 的任務", "輪詢有延遲，也浪費資源。"], ["把日誌匯出到 BigQuery，並定時執行查詢", "批次分析適合事後調查，不是即時反應。"], ["建立 log sink 把相關日誌送到 Pub/Sub，由 Cloud Run functions 訂閱處理", "事件驅動，日誌一出現就觸發，Google 建議的即時回應模式。"], ["每天匯出日誌到 Cloud Storage 並由人工檢視", "延遲最大，無法自動反應。"]], "a": [2], "e": "需要「快速反應」就用事件驅動：log sink → Pub/Sub → 函式。", "c": "react quickly · Google-recommended practices", "r": [["考綱 6.x 營運", "domains#sub-6.1"]]},
+ {"d": "D6", "q": "使用者回報偶爾有 API 請求特別慢。每個請求會經過十幾個微服務，你要找出是哪個服務花了最多時間。應該做什麼？", "o": [["在每個服務設定較短的逾時以更快失敗", "只是更快失敗，並沒有找出原因。"], ["建立 CPU 使用率的 Monitoring 告警", "整體 CPU 看不出請求在哪個服務停留。"], ["導入分散式追蹤（Cloud Trace），檢視各服務的延遲分解", "Trace 會把單一請求拆解成每個服務的時間，直接定位最慢的段落。"], ["把所有服務放大機型", "沒有定位原因，成本上升。"]], "a": [2], "e": "跨服務的延遲定位用分散式追蹤；Monitoring 告訴你有問題，Trace 告訴你在哪裡。", "c": "which service takes the longest", "r": [["考綱 6.x 營運", "domains#sub-6.1"]]},
+ {"d": "D1", "q": "IoT 平台以車輛 ID 加時間戳作為 Bigtable 的 row key。上線後 Bigtable 部分節點 CPU 很高、查詢變慢，其他節點很閒。最合理的處理是什麼？", "o": [["把叢集節點數量加倍", "熱點在單一範圍，加節點不會改善。"], ["重新設計 row key，讓寫入均勻分散（例如以車輛 ID 開頭，時間戳反轉並放在後面）", "時間戳開頭會造成循序寫入集中在最後一個 tablet；以分散的欄位開頭可平均負載。"], ["把資料型別改成 JSON 字串", "與熱點無關。"], ["改成 HDD 叢集以降低成本", "HDD 只會更慢，也無法解決熱點。"]], "a": [1], "e": "Bigtable 的熱點 ≈ row key 設計問題，不是容量問題。", "c": "hotspot · row key", "r": [["選擇器：資料庫", "picker:db"]]},
+ {"d": "D3", "q": "一家公司要求所有 BigQuery 查詢費用都計入單一專案「billing-prj」，使用者可以查詢其他專案「data-prj」內的資料集，但不能修改資料。如何授權？", "o": [["在 billing-prj 給群組 BigQuery Data Viewer，在 data-prj 給 BigQuery User", "搞反了：費用記在執行 job 的專案，而 Data Viewer 要給資料所在處。"], ["在 billing-prj 給群組 BigQuery Job User，在 data-prj 給 BigQuery Data Viewer", "在 billing-prj 才能執行 job（費用記在此），在 data-prj 只給讀取資料。"], ["在兩個專案都給 BigQuery Admin", "權限過大，使用者可以修改資料。"], ["在 data-prj 給 BigQuery User，並要求使用者在該專案下查詢", "查詢費用會算在 data-prj。"]], "a": [1], "e": "「誰付費」看 job 在哪個專案跑；「能看什麼」看資料集上的角色。", "c": "billed on a single project · can query but not edit", "r": [["選擇器：安全控制", "picker:sec"]]},
+ {"d": "D5", "q": "公司要確保只有經過 staging 驗證、並由 CI 流程簽署過的容器映像，才能部署到 production GKE 叢集；開發團隊仍要保有部署自主權。投入最小的做法是？", "o": [["制定公司規範，要求開發者在部署前自行確認", "沒有技術強制力。"], ["在 GKE 啟用 Binary Authorization，要求 CI／staging 流程簽署 attestation", "在部署時由平台驗證 attestation，沒有簽署的映像會被拒絕，且設定簡單。"], ["在 Pod 設定 lifecycle hook，未核准就不啟動", "複雜且需自行實作。"], ["關閉開發者對 production 的所有權限，改由維運人工部署", "降低自主權，也不符合需求。"]], "a": [1], "e": "供應鏈控制題：Binary Authorization ＋ CI 簽署。", "c": "only verified containers · minimal effort · autonomy", "r": [["圖解：供應鏈安全", "diagrams#fig-supply"]]},
+ {"d": "D2", "q": "某 GKE 叢集採用私有節點，內部服務需要呼叫第三方網站的 API。公司不允許任何 VM 擁有公開 IP。應該怎麼設定？", "o": [["啟用 Private Google Access", "只提供存取 Google API，不能連到任意第三方網站。"], ["設定私有叢集，並為節點所在子網路建立 Cloud NAT", "私有叢集沒有公開 IP，NAT 讓出站流量可以連到網際網路，但外面無法主動連入。"], ["為每個節點指派外部 IP 並以防火牆限制", "違反「不能有公開 IP」。"], ["把節點改成使用 route-based 網路", "與連外無關。"]], "a": [1], "e": "沒有外部 IP 又要上網 → Cloud NAT；只連 Google API → Private Google Access。", "c": "no public IP · third-party internet services", "r": [["基礎：網路", "basics#b-net"]]},
+ {"d": "D1", "q": "一個團隊的現有 Hadoop 與 Spark 作業要搬到 Google Cloud，需求是改程式碼越少越好、維運要少、並降低成本，工作可以容忍節點中斷。應該怎麼做？", "o": [["在 Compute Engine 手動安裝 Hadoop 叢集", "維運最多。"], ["使用 Dataproc（Managed Service for Apache Spark），並使用 Spot／preemptible 當 secondary workers", "幾乎不改程式碼，代管叢集，Spot 工作節點降低成本，可容忍中斷的批次工作適合。"], ["重寫為 Dataflow 並使用串流模式", "要改寫程式碼，與需求相反。"], ["把資料全部改放 Cloud SQL 並用 SQL 改寫", "大幅改寫，且不適合大規模批次處理。"]], "a": [1], "e": "「沿用 Hadoop／Spark 又要少改」就是 Dataproc；要省錢再加 Spot。", "c": "Hadoop · minimal code change · minimize costs", "r": [["選擇器：資料處理", "picker:data"]]},
+ {"d": "D5", "q": "你有一個新舊兩版 API，需要保留舊版給既有客戶，並讓測試者使用新版，兩者要共用同一個憑證與 DNS 名稱。應該怎麼設計？", "o": [["為新版另外建立一個 LB 與新網域", "需要新的憑證與 DNS，違反條件。"], ["使用同一個外部 Application LB，URL map 依路徑導向不同 backend service", "同一個 IP、憑證與 DNS，依路徑把流量分到新舊版 backend。"], ["讓舊版 API 收到請求後再轉送到新版", "耦合兩版，失去獨立部署與隔離。"], ["要求舊客戶全部改用新端點", "違反保持舊版可用的要求。"]], "a": [1], "e": "同一入口多個版本：URL map ＋ 多個 backend。", "c": "same SSL and DNS records · both APIs", "r": [["選擇器：負載平衡器", "picker:lb"]]},
+ {"d": "D4", "q": "一個團隊要把 120 TB 的資料搬進 Cloud Storage，專用網路頻寬 500 Mbps，且必須在兩週內完成。最適合的做法是什麼？", "o": [["使用 gcloud storage 平行上傳", "120 TB 在 500 Mbps 下理論上約 22 天（效率 100% 時），超過期限。"], ["訂購 Transfer Appliance，離線寫入後寄回 Google", "資料量大、頻寬受限且有期限，離線傳輸最合適。"], ["使用 Storage Transfer Service 從地端拉取", "受限於同一條頻寬，時間不變。"], ["先壓縮再用 Cloud VPN 上傳", "VPN 吞吐更低，壓縮也無法補足差距。"]], "a": [1], "e": "先算 資料量 ÷ 頻寬：120 TB × 8 ÷ 0.5 Gbps ≈ 1.9×10⁶ 秒 ≈ 22 天，超過期限，所以選離線傳輸。", "c": "120 TB · 500 Mbps · two weeks", "r": [["選擇器：資料傳輸", "picker:transfer"]]},
+ {"d": "D4", "q": "新創公司產品需求不明，只做試用，主管要求在遵守 Google 最佳實務下儘量降低 Google Cloud 成本。哪一組做法最合適？", "o": [["購買三年期承諾使用折扣，並指定專人管理成本", "需求不明就先承諾用量，風險高。"], ["善用免費額度與自動的 sustained use／彈性折扣，並訓練團隊的成本意識", "不需承諾，成本可控，也符合建立團隊能力的最佳實務。"], ["全部使用最小機型並關閉自動擴展", "可能傷害效能與可靠性，不是最佳實務。"], ["把所有環境放進單一專案，減少管理成本", "混合環境讓成本分攤與權限管理更困難。"]], "a": [1], "e": "需求不確定 → 不要先承諾用量；培養成本意識與標籤分攤是 Google 的建議。", "c": "trial usage · demand unknown · minimize cost", "r": [["基礎：計價", "basics#b-cost"]]},
+ {"d": "D6", "q": "部分 Compute Engine MIG 在每次擴展事件後，應用總是無法讀取最新狀態，而且幾乎所有 VM 都在進入服務幾秒內被重建。你已確認 curl 可以直接取得正確回應。最可能的原因與處理是什麼？", "o": [["VM 需要外部 IP，替它們各自指派", "與健康檢查失敗無關。"], ["缺少允許 Google 健康檢查來源範圍的防火牆規則，補上規則", "LB 健康檢查探測不到執行個體，被判為不健康，MIG 自動修復重建。"], ["把機型換成更大的", "VM 本身回應正常，與機型無關。"], ["關閉 MIG 的自動修復", "治標不治本，也失去自動修復能力。"]], "a": [1], "e": "「VM 被一直重建」＋「手動 curl 正常」＝健康檢查流量被防火牆擋住。", "c": "instances terminated and re-launched every minute", "r": [["選擇器：負載平衡器", "picker:lb"]]},
+ {"d": "D2", "q": "你要為整個公司設計資源階層：各部門各自管理自己的專案，但安全與網路政策要統一，並且部門專案經常新增與結束。哪個設計最符合 Google 建議？", "o": [["每個部門建立獨立的 Organization", "政策無法統一，管理負擔大。"], ["單一 Organization，每個部門一個 Folder，授權給 Google Group，在 Folder 層套用政策", "新專案自動繼承，變動少，同時有整體概覽。"], ["全部專案放在 Organization 根層，逐一授權給個別使用者", "授權分散，人員異動困難。"], ["每個專案設一位 Owner 自行管理", "缺少集中控管。"]], "a": [1], "e": "資源階層題的標準答案：單一 Org ＋ Folder ＋ 群組。", "c": "manage independently but centrally", "r": [["圖解：資源階層", "diagrams#fig-iam"]]},
+ {"d": "D3", "q": "公司想保存 Cloud VPN 日誌一年作為稽核，並且只要某個 folder 下所有專案（含未來新增）。如何設計最省工？", "o": [["在每個專案建立匯出 sink，指向中央 bucket", "新專案要逐一建立，容易漏掉。"], ["在該 folder 建立 aggregated sink，條件過濾 VPN 日誌，目標為中央 Cloud Storage bucket", "涵蓋現有與未來專案，只收需要的日誌，並設定保留期。"], ["在 Organization 層匯出所有日誌", "會多收不需要的專案日誌。"], ["手動匯出日誌並保存", "不可靠也不可稽核。"]], "a": [1], "e": "範圍是「folder 內所有專案，含未來」→ folder 層的 aggregated sink。", "c": "existing and new projects captured automatically", "r": [["考綱 6.x 營運", "domains#sub-6.1"]]},
+ {"d": "D5", "q": "你想用少量真實的 production 流量驗證 Cloud Run 上的新版本，若有問題要能立即回復。如何部署？", "o": [["直接部署新版並替換全部流量", "沒有驗證階段。"], ["部署新 revision，並把一小部分流量分給它，觀察後再逐步提高", "Cloud Run 原生支援 revision 流量百分比分配，可逐步放量或立刻切回。"], ["另外建立新的 Cloud Run 服務，再在前面加 LB 分流", "多餘的複雜度。"], ["先在開發環境測試，通過就切換", "沒有使用真實 production 流量。"]], "a": [1], "e": "Cloud Run 的 canary：同一服務、多個 revision、流量百分比。", "c": "subset of production traffic", "r": [["選擇器：發布策略", "picker:deploy"]]},
+ {"d": "D1", "q": "電商要處理每秒 50 萬次寫入，之後依一組已知屬性精確比對即時查詢，夜間幾乎沒有流量，業務要求成本低。哪種組合最合適？", "o": [["Cloud Run 搭配 BigQuery", "BigQuery 適合分析，不適合以精確 key 做即時單筆查詢，寫入也受配額限制。"], ["Cloud Run 搭配 Bigtable", "Cloud Run 可縮到 0 控制成本；Bigtable 提供高吞吐寫入與依 key 的低延遲讀取。"], ["固定 3 台 Compute Engine 搭配 Cloud SQL", "無法水平擴展到每秒 50 萬寫入，也沒有縮到 0。"], ["GKE Standard 搭配 Cloud SQL", "同樣的資料庫瓶頸，維運成本高。"]], "a": [1], "e": "高寫入加 key 查詢 → Bigtable；閒時成本低 → Cloud Run。", "c": "500,000 requests per second · exact match · periods without requests", "r": [["選擇器：運算", "picker:compute"]]}
 ];
 </script>
 
@@ -2248,7 +2413,7 @@ $$(".qcount").forEach(el=>el.textContent=QUIZ.length);
 
 /* ================= navigation ================= */
 const TABS=$$(".tab").map(b=>b.dataset.tab);
-const TABINFO={overview:["開始","考試在考什麼、題目怎麼解、學習路線"],basics:["基礎觀念","資源範圍、IAM、網路、計價、可靠性、遷移、六大支柱"],domains:["考綱拆解","22 個子題的背景、重點與考點"],picker:["服務選擇器","九棵決策樹，練習選服務"],diagrams:["架構圖解","七張機制圖：政策、流量、邊界"],cases:["案例研究","四個官方案例的需求與目標架構"],quiz:["練習與模擬考",QUIZ.length+" 題逐項詳解，20 題計時模擬"],cards:["速記卡","考前複習數字與定義"],plan:["讀書計畫","依背景調整的 8 週計畫"],res:["資源","官方文件、書籍、GitHub、課程"]};
+const TABINFO={overview:["開始","考試在考什麼、題目怎麼解、學習路線"],basics:["基礎觀念","資源範圍、IAM、網路、計價、可靠性、遷移、六大支柱"],domains:["考綱拆解","22 個子題的背景、重點與考點"],picker:["服務選擇器","九棵決策樹，練習選服務"],diagrams:["架構圖解","七張機制圖：政策、流量、邊界"],cases:["案例研究","四個官方案例的需求與目標架構"],bank:["題庫考點","278 題題庫拆成考點，附舊名對照"],quiz:["練習與模擬考",QUIZ.length+" 題逐項詳解，20 題計時模擬"],cards:["速記卡","考前複習數字與定義"],plan:["讀書計畫","依背景調整的 8 週計畫"],res:["資源","官方文件、書籍、GitHub、課程"]};
 function show(id){
   if(!TABS.includes(id))id="overview";
   $$(".tab").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===id?"true":"false"));
@@ -2609,6 +2774,26 @@ const h=(location.hash||"").slice(1);
 if(TABS.includes(h))go(h,{scroll:false});
 else if(h&&document.getElementById(h)){const p=document.getElementById(h).closest("[data-panel]");go((p?p.dataset.panel:"overview")+"#"+h)}
 else go(store.get("tab","overview"),{scroll:false});
+})();
+</script>
+
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const items=$$("details.bk"); const inp=$("#bkSearch"); if(!inp)return;
+const cnt=$("#bkCount");
+function filt(){const q=inp.value.trim().toLowerCase();let n=0;
+ items.forEach(d=>{const ok=!q||d.textContent.toLowerCase().includes(q);d.hidden=!ok;if(ok){n++;if(q)d.open=true}});
+ cnt.textContent=q?("符合的主題："+n+" / "+items.length):""}
+inp.addEventListener("input",filt);
+let open=false;$("#bkAll").addEventListener("click",()=>{open=!open;items.forEach(d=>{if(!d.hidden)d.open=open})});
+const tb=$("#xfTB"),mb=$("#xfMb"),ef=$("#xfEf");
+function calc(){const tbv=+tb.value||0,m=+mb.value||1,e=(+ef.value||80)/100;
+ const sec=tbv*8e6/(m*e);const h=sec/3600,d=h/24;
+ $("#xfT").textContent=d>=1?d.toFixed(1)+" 天":h.toFixed(1)+" 小時";
+ $("#xfR").textContent=d>14?"超過兩週：考慮 Transfer Appliance":d>3?"數天：視期限與成本，離線傳輸可評估":"網路上傳即可（gcloud storage 平行上傳）"}
+[tb,mb,ef].forEach(x=>x.addEventListener("input",calc));calc();
 })();
 </script>
 
